@@ -1,0 +1,25 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: rgb(235, 225, 225);
+}
+#new_btn{
+    background: rgb(215, 198, 198);
+    cursor: pointer;
+}
+
+
+#shelf{
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px ;
+    grid-template-rows: 200px 200px;
+    grid-gap: 100px;
+    justify-content: center;
+    grid-auto-rows: 200px;  
+}
+
+div{
+    border: 1px solid black;
+
+}

@@ -1,13 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1 id="firsthead">Hello Developer</h1>
+    <h1 id="firsthead">Library</h1>
+    <button class="btn" id="new_btn">Add Book</button>
+
+    <section id="shelf">
+        <div class="rows">
+            <p>B1</p>
+            <p>Title: Power</p>
+            <p>Author: John</p>
+            <p>Pages: 235 </p>
+            <p>Status: read it before</p>
+        </div>
+        <div class="rows">
+            <p>B2</p>
+            <p>Title: Time</p>
+            <p>Author: John</p>
+            <p>Pages: 235 </p>
+            <p>Status: not read it yet</p>
+        </div>
+        <div class="rows">
+            <p>B3</p>
+            <p>Title: Money</p>
+            <p>Author: John</p>
+            <p>Pages: 235 </p>
+            <p>Status: not read it yet</p>
+        </div>
+        <div class="rows">
+            <p>B4</p>
+            <p>Title: Rich</p>
+            <p>Author: John</p>
+            <p>Pages: 235 </p>
+            <p>Status: read it before</p>
+    </section>
+
+    <dialog id="myDialog">
+        <form method="dialog">
+            <p id="title">
+                <label>
+                    Enter Title:
+                    <input type="text" id="inputTitle" name="title" />
+                </label>
+            </p>
+            <p id="Author">
+                <label>
+                    Enter Author:
+                    <input type="text" id="inputAuthor" name="author" />
+                </label>
+            </p>
+            <p id="pages">
+                <label>
+                    Enter pages:
+                    <input type="number" id="inputPages" name="pages" />
+                </label>
+            </p>
+            <p id="state">
+                <label>
+                    Enter State:
+                    <input type="text" id="inputState" name="state" />
+                </label>
+            </p>
+            <button id="cancel" type="cancel" value="cancelled"> Cancel</button>
+            <button id="submit" type="submit" value="submitted"> Submit</button>
+        </form>
+
+    </dialog>
+    <button id="showBtn"> Add Book</button>
+
+
+
 
     <script src="script.js"></script>
 </body>
+
 </html>
