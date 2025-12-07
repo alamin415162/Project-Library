@@ -136,5 +136,3 @@ function displayArrayObjects(arr, containerId) {
                 console.error(error.message);
         }
 }
-
-displayArrayObjects(people, "output");

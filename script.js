@@ -16,32 +16,35 @@ function Book(title, author, pages, isRead) {
         this.state = 'not read it yet'
     }
     // a method to print info about the book
-    this.info = function () {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.state} `
+    // this.info = function () {
+    //     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.state} `
 
-    }
+    // }
 }
 
 
 // declare a function to display books in the library array
-function displayBooks(arr, containerId){
+
+let runtimes = 0; //count how many time a function called
+function displayBooks(arr, containerId) {
     try {
         // validate inputs
-        if(!Array.isArray(arr)){
+        if (!Array.isArray(arr)) {
             throw new Error('First argument must be array')
         }
 
         const container = document.getElementById(containerId)
-        if(!container){
+        if (!container) {
             throw new Error(`no element is found with id ${containerId}`)
         }
         // loop throw the array and display
-        arr.forEach((obj, index) =>{
-            if(typeof obj !== 'object' || obj == null){
+        runtimes++
+        arr.forEach((obj, index) => {
+            if (typeof obj !== 'object' || obj == null) {
                 console.warn(`skiping invalid item at index ${index}`)
                 return;
             }
-            
+
             const div = document.createElement('div')
             const para = document.createElement('p')
             para.textContent = `Title: ${obj.title}`
@@ -51,19 +54,46 @@ function displayBooks(arr, containerId){
             para2.textContent = `Pages: ${obj.pages}`
             const para3 = document.createElement('p')
             para3.textContent = `State: ${obj.state}`
+            const rmvBtn = document.createElement('button')
+            rmvBtn.textContent = 'remove'
+            rmvBtn.className = 'remove'
+            const cgState = document.createElement('button')
+            cgState.textContent = 'State'
+            cgState.className = 'change-state'
             div.appendChild(para)
             div.appendChild(para1)
             div.appendChild(para2)
             div.appendChild(para3)
+            div.appendChild(rmvBtn)
+            div.appendChild(cgState)
             container.appendChild(div)
+
         })
-
-
-    }catch{
+    } catch {
         console.error(error.message)
     }
 }
 
+function displayAddedBook(lastBook) {
+    const container = document.getElementById('shelf')
+    const div = document.createElement('div')
+    const rmvBtn = document.createElement('button')
+    rmvBtn.textContent = 'remove'
+    const cgState = document.createElement('button')
+    cgState.textContent = 'State'
+    rmvBtn.className = 'remove'
+    cgState.className = 'change-state'
+    Object.keys(lastBook).forEach(key => {
+        const para = document.createElement('p')
+        para.textContent = `${key}: ${lastBook[key]}`
+        div.appendChild(para)
+        container.appendChild(div)
+    })
+    div.appendChild(rmvBtn)
+    div.appendChild(cgState)
+    container.appendChild(div)
+
+}
 
 // constructing some placeholder book object from the prototype Book
 const book1 = new Book('relativity', 'albert', 221, true)
@@ -71,7 +101,7 @@ const book2 = new Book('magnetism', 'faraday', 311, false)
 const book3 = new Book('force Law', 'lorenz', 122, true)
 const book4 = new Book('laser', 'gemechu', 125, true)
 
-const myLibrary = [book1,book2,book3,book4];
+const myLibrary = [book1, book2, book3, book4];
 
 
 
@@ -90,28 +120,65 @@ const submit = document.getElementById('submit')
 
 
 
+cancel.addEventListener('click', (e) => {
+    e.preventDefault()
+    myDialog.close('cancel')
+})
+const form = document.getElementById('myForm')
 
-showBtn.addEventListener('click', ()=>{
+showBtn.addEventListener('click', () => {
+    form.reset()
     myDialog.showModal()
+
+})
+let result;
+myDialog.addEventListener('close', () => {
+    result = myDialog.returnValue
+    if (result == 'submit') {
+        const formData = new FormData(form)
+        console.log('-----Form Inspection------')
+        const titleOf = formData.get('title')
+        const authorOf = formData.get('author')
+        const pagesOf = formData.get('pages')
+        const stateOf = formData.get('state')
+        console.log(`author: ${titleOf}`)
+        console.log(`author: ${authorOf}`)
+        console.log(`author: ${pagesOf}`)
+        console.log(`author: ${stateOf}`)
+        addTo(titleOf, authorOf, pagesOf, stateOf)
+        displayAddedBook(myLibrary.at(-1))
+    } else if (result == 'cancel') {
+        console.log('dialog cancelled')
+    } else {
+        console.log('dialog dismissed')
+    }
 })
 
-cancel.addEventListener('click', () =>{
-    myDialog.close('closed')
+function checkSubmission() {
+    console.log(result)
+    if (result == 'submit') {
+        console.log('submitted')
+    }
+    // }else if(myDialog.returnValue == 'cancel'){
+    //     console.log('cancelled')
+    // }else if(myDialog.returnValue == '') {
+    //     console.log('return value not assigned')
+    // }else {
+    //     console.log('dismissed')
+    // }
+}
+
+
+const btns = document.querySelectorAll('.remove')
+btns.forEach(button => {
+    button.addEventListener('click', () => {
+        console.log('remove button clicked')
+    })
 })
-submit.addEventListener('click', () =>{
-    myDialog.close()
-})
 
-myDialog.addEventListener('close', () =>{
-    console.log(myDialog.returnValue)
-})
-
-
-
-addTo('science','tecno', 322, true)
-displayBooks(myLibrary, 'shelf')
-
-
-
+console.log(runtimes)
+if (runtimes == 0) {
+    displayBooks(myLibrary, 'shelf')
+}
 
 

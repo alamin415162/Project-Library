@@ -14,36 +14,40 @@
 
     <section id="shelf">
         <div class="rows">
-            <p>B1</p>
             <p>Title: Power</p>
             <p>Author: John</p>
             <p>Pages: 235 </p>
             <p>Status: read it before</p>
+            <button class="remove">remove</button>
+            <button class="change-state">State</button>       
         </div>
         <div class="rows">
-            <p>B2</p>
             <p>Title: Time</p>
             <p>Author: John</p>
             <p>Pages: 235 </p>
             <p>Status: not read it yet</p>
+            <button class="remove">remove</button>
+            <button class="change-state">State</button>
         </div>
         <div class="rows">
-            <p>B3</p>
             <p>Title: Money</p>
             <p>Author: John</p>
             <p>Pages: 235 </p>
             <p>Status: not read it yet</p>
+            <button class="remove">remove</button>
+            <button class="change-state">State</button>
         </div>
         <div class="rows">
-            <p>B4</p>
             <p>Title: Rich</p>
             <p>Author: John</p>
             <p>Pages: 235 </p>
             <p>Status: read it before</p>
+            <button class="remove">remove</button>
+            <button class="change-state">State</button>
     </section>
 
     <dialog id="myDialog">
-        <form method="dialog">
+        <form method="dialog" id="myForm">
             <p id="title">
                 <label>
                     Enter Title:
@@ -68,8 +72,8 @@
                     <input type="text" id="inputState" name="state" />
                 </label>
             </p>
-            <button id="cancel" type="cancel" value="cancelled"> Cancel</button>
-            <button id="submit" type="submit" value="submitted"> Submit</button>
+            <button id="cancel" type="cancel" value="cancel"> Cancel</button>
+            <button id="submit" type="submit" value="submit"> Submit</button>
         </form>
 
     </dialog>
