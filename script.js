@@ -1,25 +1,19 @@
 // declare a contructor function to construct book objects
-function Book(title, author, pages, isRead) {
-    // validating input
-    if (!new.target) {
-        throw Error('Please use the new keyword to acces this constructor')
-    }
+class Book{
+    constructor(title,author,pages,isRead){
+        this.title = title;
+        this.author = title;
+        this.pages = pages;
+        // checking status
+        
+        if(isRead){
+            this.state = 'read it before'
 
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    // checking the status
-    if (isRead) {
-        this.state = 'read it before'
-    }
-    else {
-        this.state = 'not read it yet'
-    }
-    // a method to print info about the book
-    // this.info = function () {
-    //     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.state} `
+        }else{
+            this.state = 'not read it yet'
+        }
 
-    // }
+    }
 }
 
 
@@ -33,6 +27,7 @@ function displayBooks(arr, containerId) {
             throw new Error('First argument must be array')
         }
 
+        // defining the container element with its id
         const container = document.getElementById(containerId)
         if (!container) {
             throw new Error(`no element is found with id ${containerId}`)
@@ -74,6 +69,7 @@ function displayBooks(arr, containerId) {
     }
 }
 
+// a function to display a newly added book
 function displayAddedBook(lastBook) {
     const container = document.getElementById('shelf')
     const div = document.createElement('div')
@@ -101,6 +97,8 @@ const book2 = new Book('magnetism', 'faraday', 311, false)
 const book3 = new Book('force Law', 'lorenz', 122, true)
 const book4 = new Book('laser', 'gemechu', 125, true)
 
+
+// our library array 
 const myLibrary = [book1, book2, book3, book4];
 
 
@@ -119,7 +117,7 @@ const cancel = document.getElementById('cancel')
 const submit = document.getElementById('submit')
 
 
-
+// event listeners
 cancel.addEventListener('click', (e) => {
     e.preventDefault()
     myDialog.close('cancel')

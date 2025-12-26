@@ -1,3 +1,36 @@
+class Book{
+        constructor(title, author, pages, isRead){
+                this.title = title;
+                this.author = author;
+                this.pages = pages;
+                if(isRead){
+                        this.state = 'read it before'
+                }
+                else{
+                        this.state = 'not read it yet!'
+                }
+        }
+}
+
+const book1 = new Book('magic', 'harry', 234, true)
+console.log(book1.title)
+console.log(book1.title)
+console.log(book1.state)
+console.log(book1.author)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // let user = {
 //     name: 'John',
 //     surname: 'Smith',
@@ -89,50 +122,50 @@
 // nums.forEach((num, factor) => {
 //         console.log(num * factor)
 // })
-const people = [
-        { name: "Alice", age: 25, city: "New York" },
-        { name: "Bob", age: 30, city: "London" },
-        { name: "Charlie", age: 28, city: "Paris" }
-];
+// const people = [
+//         { name: "Alice", age: 25, city: "New York" },
+//         { name: "Bob", age: 30, city: "London" },
+//         { name: "Charlie", age: 28, city: "Paris" }
+// ];
 
 
-function displayArrayObjects(arr, containerId) {
-        try {
-                // Validate inputs
-                if (!Array.isArray(arr)) {
-                        throw new Error("First argument must be an array.");
-                }
-                const container = document.getElementById(containerId);
-                if (!container) {
-                        throw new Error(`No element found with ID "${containerId}".`);
-                }
+// function displayArrayObjects(arr, containerId) {
+//         try {
+//                 // Validate inputs
+//                 if (!Array.isArray(arr)) {
+//                         throw new Error("First argument must be an array.");
+//                 }
+//                 const container = document.getElementById(containerId);
+//                 if (!container) {
+//                         throw new Error(`No element found with ID "${containerId}".`);
+//                 }
 
-                // Clear previous content
-                // container.innerHTML = "";
+//                 // Clear previous content
+//                 // container.innerHTML = "";
 
-                // Loop through array and create HTML elements
-                arr.forEach((obj, index) => {
-                        if (typeof obj !== "object" || obj === null) {
-                                console.warn(`Skipping invalid item at index ${index}`);
-                                return;
-                        }
+//                 // Loop through array and create HTML elements
+//                 arr.forEach((obj, index) => {
+//                         if (typeof obj !== "object" || obj === null) {
+//                                 console.warn(`Skipping invalid item at index ${index}`);
+//                                 return;
+//                         }
 
-                        const div = document.createElement("div");
-                        const para = document.createElement('p')
-                        para.textContent = `Name: ${obj.name }`
-                        const para1 = document.createElement('p')
-                        para1.textContent = `city: ${obj.name }`
-                        const para2 = document.createElement('p')
-                        para2.textContent = `age: ${obj.name }`
-                        div.className = "item";
-                        //div.textContent = `Name: ${obj.name || "N/A"}, Age: ${obj.age || "N/A"}, City: ${obj.city || "N/A"}`;
-                        div.appendChild(para)
-                        div.appendChild(para1)
-                        div.appendChild(para2)
-                        container.appendChild(div);
-                });
+//                         const div = document.createElement("div");
+//                         const para = document.createElement('p')
+//                         para.textContent = `Name: ${obj.name }`
+//                         const para1 = document.createElement('p')
+//                         para1.textContent = `city: ${obj.name }`
+//                         const para2 = document.createElement('p')
+//                         para2.textContent = `age: ${obj.name }`
+//                         div.className = "item";
+//                         //div.textContent = `Name: ${obj.name || "N/A"}, Age: ${obj.age || "N/A"}, City: ${obj.city || "N/A"}`;
+//                         div.appendChild(para)
+//                         div.appendChild(para1)
+//                         div.appendChild(para2)
+//                         container.appendChild(div);
+//                 });
 
-        } catch (error) {
-                console.error(error.message);
-        }
-}
+//         } catch (error) {
+//                 console.error(error.message);
+//         }
+// }
