@@ -10,7 +10,6 @@
 
 <body>
     <h1 id="firsthead">Library</h1>
-    <button class="btn" id="new_btn">Add Book</button>
 
     <section id="shelf">
         <div class="rows">
@@ -51,25 +50,25 @@
             <p id="title">
                 <label>
                     Enter Title:
-                    <input type="text" id="inputTitle" name="title" />
+                    <input type="text" id="inputTitle" name="title" required minlength="4"/>
                 </label>
             </p>
             <p id="Author">
                 <label>
                     Enter Author:
-                    <input type="text" id="inputAuthor" name="author" />
+                    <input type="text" id="inputAuthor" name="author" required/>
                 </label>
             </p>
             <p id="pages">
                 <label>
                     Enter pages:
-                    <input type="number" id="inputPages" name="pages" />
+                    <input type="number" id="inputPages" name="pages" required/>
                 </label>
             </p>
             <p id="state">
                 <label>
                     Enter State:
-                    <input type="text" id="inputState" name="state" />
+                    <input type="text" id="inputState" name="state" placeholder="write true or false" required/>
                 </label>
             </p>
             <button id="cancel" type="cancel" value="cancel"> Cancel</button>
